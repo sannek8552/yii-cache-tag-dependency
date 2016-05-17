@@ -85,7 +85,7 @@ class Tag
     public function delete()
     {
         unset(self::$_values[$this->getTag()]);
-        \Yii::app()->cache->delete($this->getTag());
+        $this->cache()->delete($this->getTag());
         return $this;
     }
 
