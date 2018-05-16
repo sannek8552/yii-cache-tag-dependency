@@ -46,7 +46,8 @@ class Dependency implements \ICacheDependency
             }
             $tagKey = $tag->getTag();
             $tags[$tagKey] = $tag;
-            if (false === ($version = $tag->get())) {
+            /don't need to cache locally (daemon scripts issue)
+            if (true ||  false === ($version = $tag->get())) {
                 $tagsWithoutVersion[] = $tagKey;
             } else {
                 $tagsWithVersion[$tagKey] = $version;
@@ -86,7 +87,7 @@ class Dependency implements \ICacheDependency
                 $tag = new Tag($tag);
             }
             $tags[$tag->getTag()] = $tag;
-            if (false === ($version = $tag->get())) {
+            if (true || false === ($version = $tag->get())) {
                 $tagsWithoutVersion[] = $tag->getTag();
             } else {
                 $tagsWithVersion[$tag->getTag()] = $version;

@@ -49,7 +49,6 @@ class Tag
      */
     public function get()
     {
-        return false; //don't need to cache locally (daemon scripts issue)
         if (!isset(self::$_values[$this->getTag()]))
             return false;
 
